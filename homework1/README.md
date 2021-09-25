@@ -22,8 +22,8 @@
     You can type the sequence of your interest or use some examples by typing this:
     
     example sequences:
-    dna or dna example          use example dna sequence {get_example('dna example')}
-    rna or rna example          use example rna sequence {get_example('rna example')}
+    dna or dna example          use example dna sequence 'ACGTacgtAATtggcgcg'
+    rna or rna example          use example rna sequence 'ACGUacguAAUuggcgcg'
     
     input example files:
     vd or viruses default       use example viruses genome sequences with a default nucleotide alphabet
