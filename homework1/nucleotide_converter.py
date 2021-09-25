@@ -169,7 +169,7 @@ while True:
     elif command in {'help', 'h'}:
         print(get_help())
     elif command not in {'reverse', 'transcribe', 'reverse transcribe', 'complement', 
-    'reverse complement', 'print' 'r', 't', 'c', 'rc', 'p', 'rt'}:
+    'reverse complement', 'print', 'r', 't', 'c', 'rc', 'p', 'rt'}:
         print('Invalid command. Try again!\n')
     else:
         mode = input("Type 'm' to insert the sequence manually or 'f' to download sequences from file: ").lower()
@@ -177,11 +177,16 @@ while True:
             input_file = input('Enter input file: ')
             if input_file in {'viruses extended', 've', 'viruses default', 'vd'}:
                 input_file, output_file = get_file_example(input_file)
+                try:
+                    f = open(input_file)
+                except FileNotFoundError:
+                    print(f'File {input_file} is not found in the working directory. Please, place it here and try again!\n')
+                    continue
             else:
                 try:
                     f = open(input_file)
                 except FileNotFoundError:
-                    print(f'File {input_file} not found\n')
+                    print(f'File {input_file} is not found\n')
                     continue
                 else:
                     output_file = input('Enter output file: ')
