@@ -175,5 +175,3 @@ while True:
             else:
                 result = convert_from_si(unit2, convert_to_si(unit1, float(value)))
                 get_result(result, value, unit1, unit2)
-                #print(converter.keys())
-                #print(len(converter.keys()))
