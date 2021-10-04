@@ -144,8 +144,8 @@ def get_help():
     e or exit                   quit the programm
     q or quit                   quit the programm
     h or help                   get this help page
-    p or print                  print a DNA/RNA sequence itself. It may be usefull to check if your sequence has 
-                                suitable format (dna or rna) with valid alphabet or convert multi-line fasta 
+    p or print                  print a DNA/RNA sequence itself. It may be usefull to check if your sequence has
+                                suitable format (dna or rna) with valid alphabet or convert multi-line fasta
                                 from input file into single line fasta per sequence format in output file
     r or reverse                converts a DNA/RNA sequence into its reverse conterpart
     rc or reverse complement    converts a DNA/RNA sequence into its reverse complement conterpart
@@ -212,6 +212,7 @@ while True:
                 input_file, output_file = get_file_example(input_file)
                 try:
                     f = open(input_file)
+                    f.close()
                 except FileNotFoundError:
                     print(f'File {input_file} is not found in the working directory. \
                             Please, place it here and try again!\n')
@@ -219,6 +220,7 @@ while True:
             else:
                 try:
                     f = open(input_file)
+                    f.close()
                 except FileNotFoundError:
                     print(f'File {input_file} is not found\n')
                     continue
@@ -227,8 +229,8 @@ while True:
             dna_or_rna = use_dna_or_rna_letters(get_sequence_example_from_file(input_file))
             extended, nucl_dic = get_extended_alphabet(mode, dna_or_rna, input_file)
             if is_invalid_alphabet(get_sequence_example_from_file(input_file)):
-                print(f"Invalid alphabet: {''.join(set(get_sequence_example_from_file(input_file)) - \
-                        set(''.join(nucl_dic.keys())))}. Try again!\n")
+                mes = f"Invalid alphabet: {''.join(set(get_sequence_example_from_file(input_file)) - set(''.join(nucl_dic.keys())))}."
+                print(f"{mes} Try again!\n")
             else:
                 get_sequences_from_file(command, input_file, output_file)
                 print()
