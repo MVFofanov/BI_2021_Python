@@ -5,13 +5,18 @@ reverse_transcribed_dic = dict(zip('Uu', 'Tt'))
 extended_dna_dic = dict(zip('ACGTWSMKRYNBDHVacgtwsmkrynbdhv', 'TGCASWKMYRNVHDBtgcaswkmyrnvhdb'))
 extended_rna_dic = dict(zip('ACGUWSMKRYNBDHVacguwsmkrynbdhv', 'UGCASWKMYRNVHDBugcaswkmyrnvhdb'))
 
+
 def use_dna_or_rna_letters(sequence):
     if 'u' not in sequence.lower():
         return dna_dic
     else:
         return rna_dic
+
+
 def is_invalid_alphabet(sequence):
     return set(sequence.lower()) - set(''.join(nucl_dic.keys()).lower())
+
+
 def get_extended_alphabet(mode, dna_or_rna, input_file=''):
     extended = input('Do you want to use the extended nucleotide alphabet? Type yes or no: ').lower()
     if extended in {'yes', 'y'} and mode in {'m', 'manually', 'f', 'file'} and dna_or_rna == dna_dic:
@@ -22,38 +27,56 @@ def get_extended_alphabet(mode, dna_or_rna, input_file=''):
         return extended, use_dna_or_rna_letters(get_sequence_example_from_file(input_file))
     else:
         return extended, use_dna_or_rna_letters(sequence)
+
+
 def get_print(sequence):
     return sequence
+
+
 def get_reversed(sequence):
     return sequence[::-1]
+
+
 def get_transcribed(sequence, extended=''):
     rna_error = 'Try to transcribe a DNA sequence instead of RNA'
     if 'u' in sequence.lower():
         return rna_error
     else:
         return ''.join([c if c not in {'T', 't'} else transcribed_dic[c] for c in sequence])
+
+
 def get_reverse_transcribed(sequence, extended=''):
     dna_error = 'Try to reverse transcribe a RNA sequence instead of DNA'
     if 't' in sequence.lower():
         return dna_error
     else:
         return ''.join([c if c not in {'U', 'u'} else reverse_transcribed_dic[c] for c in sequence])
+
+
 def get_complemented(sequence):
     return ''.join([nucl_dic[c] for c in sequence])
+
+
 def get_reverse_complemented(sequence):
     return get_complemented(get_reversed(sequence))
+
+
 def get_example(example):
     example = example.lower()
     if example == 'dna example' or example == 'dna':
         return 'ACGTacgtAATtggcgcg'
     elif example == 'rna example' or example == 'rna':
         return 'ACGUacguAAUuggcgcg'
+
+
 def get_file_example(example):
     example = example.lower()
     if example in {'viruses extended', 've'}:
         return 'viruses_extended_alphabet_examples.txt', 'viruses_extended_alphabet_examples_result.txt'
     elif example in {'viruses default', 'vd'}:
         return 'viruses_default_alphabet_examples.txt', 'viruses_default_alphabet_examples_result.txt'
+
+
 def get_sequence_example_from_file(input_file):
     with open(input_file) as r:
         lines = r.read().splitlines()
@@ -62,6 +85,8 @@ def get_sequence_example_from_file(input_file):
             if not line.startswith('>'):
                 fasta += line
         return fasta
+
+
 def get_converted_sequence(command, sequence, extended=''):
     if command in {'reverse', 'r'}:
         return get_reversed(sequence)
@@ -75,6 +100,8 @@ def get_converted_sequence(command, sequence, extended=''):
         return get_reverse_complemented(sequence)
     elif command in {'print', 'p'}:
         return get_print(sequence)
+
+
 def get_converted_header(command, header):
     if command in {'reverse', 'r'}:
         return header + '_sequence_was_reversed'
@@ -88,6 +115,8 @@ def get_converted_header(command, header):
         return header + '_sequence_was_reverse_complemented'
     elif command in {'print', 'p'}:
         return header + '_sequence_was_printed'
+
+
 def get_sequences_from_file(command, input_file, output_file):
     with open(input_file) as r, open(output_file, 'w') as w:
         lines = r.read().splitlines()
@@ -101,8 +130,10 @@ def get_sequences_from_file(command, input_file, output_file):
                 else:
                     w.write(get_converted_header(command, line) + '\n')
             else:
-                fasta +=line
+                fasta += line
         w.write(get_converted_sequence(command, fasta) + '\n')
+
+
 def get_help():
     help_message = f'''
     Program: nucleotide_converter.py
@@ -154,12 +185,14 @@ def get_help():
     '''
     return help_message
 
+
 print('''
     Frequently used commands: complement, exit, help, reverse, reverse complement, transcribe.
     Commands can be used not only by their full names, but also by its first letters, for example,
     such command as 'c' or 'complement' and 'rc' or 'reverse complement' performs equally
     Full list of commands, examples and details of use you can find by entering 'h' or 'help'
     ''')
+
 
 while True:
     command = input('Enter command: ').lower()
@@ -168,8 +201,8 @@ while True:
         break
     elif command in {'help', 'h'}:
         print(get_help())
-    elif command not in {'reverse', 'transcribe', 'reverse transcribe', 'complement', 
-    'reverse complement', 'print', 'r', 't', 'c', 'rc', 'p', 'rt'}:
+    elif command not in {'reverse', 'transcribe', 'reverse transcribe', 'complement',
+                        'reverse complement', 'print', 'r', 't', 'c', 'rc', 'p', 'rt'}:
         print('Invalid command. Try again!\n')
     else:
         mode = input("Type 'm' to insert the sequence manually or 'f' to download sequences from file: ").lower()
