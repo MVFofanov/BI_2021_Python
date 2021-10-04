@@ -229,8 +229,8 @@ while True:
             dna_or_rna = use_dna_or_rna_letters(get_sequence_example_from_file(input_file))
             extended, nucl_dic = get_extended_alphabet(mode, dna_or_rna, input_file)
             if is_invalid_alphabet(get_sequence_example_from_file(input_file)):
-                mes = f"Invalid alphabet: {''.join(set(get_sequence_example_from_file(input_file)) - set(''.join(nucl_dic.keys())))}."
-                print(f"{mes} Try again!\n")
+                mes = ''.join(set(get_sequence_example_from_file(input_file)) - set(''.join(nucl_dic.keys())))
+                print(f"Invalid alphabet: {mes}. Try again!\n")
             else:
                 get_sequences_from_file(command, input_file, output_file)
                 print()
