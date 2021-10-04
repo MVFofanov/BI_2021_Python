@@ -158,7 +158,7 @@ def get_help():
                                 file name format: file.txt, file.fasta, etc
 
     You can type the sequence of your interest or use some examples by typing this:
-    
+
     example sequences:
     dna or dna example          use example dna sequence {get_example('dna example')}
     rna or rna example          use example rna sequence {get_example('rna example')}
