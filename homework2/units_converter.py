@@ -75,7 +75,7 @@ def get_help():
     temperature                     degrees celsius (c), degrees kelvin (k), degrees fahrenheit (f)
 
     
-    Contacts:
+    Contacts: 
     Mikhail Fofanov                 mikhail.v.fofanov@gmail.com
     '''
     return help_message
@@ -83,6 +83,7 @@ def get_help():
 
 def greeting_message():
     print('''
+    You will know the truth, and the truth will set you free.
     To convert some unit to another, type your request in this format: number unit1 unit2
     Units should be denoted as its short names: 'm' for metres or 'g' for grams
     For example, to convert 451 degrees Fahrenheit to degrees Celsius type: 451 f c
@@ -175,5 +176,3 @@ while True:
             else:
                 result = convert_from_si(unit2, convert_to_si(unit1, float(value)))
                 get_result(result, value, unit1, unit2)
-                #print(converter.keys())
-                #print(len(converter.keys()))
