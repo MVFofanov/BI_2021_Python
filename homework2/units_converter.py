@@ -1,17 +1,17 @@
 converter = {'m': 1, 'km': 1000, 'dm': 0.1, 'cm': 0.01, 'mm': 0.001, 'mcm': 0.000001, 'nm': 0.000000001,
-            'lea': 4828.032, 'mi': 1609.344, 'yd': 0.9144,
-            'ft': 0.3048, 'in': 0.0254, 'ln': 0.0021666666666, 'cl': 0.000254, 'nl': 5556, 'nmi': 1852,
-            'ftm': 1.8288,
-            'kg': 1, 'g': 0.001, 'mg': 0.000001, 'mcg': 0.000000001, 'ng': 0.000000000001, 'q': 100, 
-            't': 1000, 'ct': 0.0002, 'lb': 0.45359237,
-            'm2': 1, 'km2': 1000000, 'ha': 10000, 'a': 100, 'yd2': 0.83612736, 'ft2': 0.09290304,
-            'm3': 1, 'dm3': 0.001, 'cm3': 0.000001, 'mm3': 0.000000001, 'l': 0.001, 'ml': 0.000001,
-            'mcl': 0.000000001, 'yd3': 0.764554857984, 'ft3': 0.028316846592, 'bl': 0.16365924,
-            'bbl': 0.158987, 'gal': 0.00378541, 'qt': 0.000946353, 'pt': 0.000568261,
-            'oz': 0.000028349523125,
-            'm/s': 1, 'km/s': 1000, 'km/h': 0.277778, 'm/min': 0.0166667, 'km/min': 16.6667,
-            'c': None, 'k': None, 'f': None,
-               }
+             'lea': 4828.032, 'mi': 1609.344, 'yd': 0.9144,
+             'ft': 0.3048, 'in': 0.0254, 'ln': 0.0021666666666, 'cl': 0.000254, 'nl': 5556, 'nmi': 1852,
+             'ftm': 1.8288,
+             'kg': 1, 'g': 0.001, 'mg': 0.000001, 'mcg': 0.000000001, 'ng': 0.000000000001, 'q': 100,
+             't': 1000, 'ct': 0.0002, 'lb': 0.45359237,
+             'm2': 1, 'km2': 1000000, 'ha': 10000, 'a': 100, 'yd2': 0.83612736, 'ft2': 0.09290304,
+             'm3': 1, 'dm3': 0.001, 'cm3': 0.000001, 'mm3': 0.000000001, 'l': 0.001, 'ml': 0.000001,
+             'mcl': 0.000000001, 'yd3': 0.764554857984, 'ft3': 0.028316846592, 'bl': 0.16365924,
+             'bbl': 0.158987, 'gal': 0.00378541, 'qt': 0.000946353, 'pt': 0.000568261,
+             'oz': 0.000028349523125,
+             'm/s': 1, 'km/s': 1000, 'km/h': 0.277778, 'm/min': 0.0166667, 'km/min': 16.6667,
+             'c': None, 'k': None, 'f': None,
+            }
 
 units = ({'m', 'km', 'dm', 'cm', 'mm', 'mcm', 'nm', 'lea', 'mi', 'yd', 'ft', 'in', 'ln', 'cl', 'nl', 'nmi', 'ftm'},
          {'kg', 'g', 'mg', 'mcg', 'ng', 'q', 't', 'ct', 'lb'},
@@ -38,7 +38,7 @@ def get_help():
 
     Example                         to convert 451 degrees Fahrenheit to degrees Celsius type one of this example
                                     commands, which perform equally:
-                                    451 f c 
+                                    451 f c
                                     or
                                     451 f to c
                                     or even something like that:
@@ -60,14 +60,14 @@ def get_help():
                                     nautical mile (nmi), fathom (ftm)
 
     weight                          kilogram (kg), gram (g), milligram (mg), microgram (mcg), nanogram (ng),
-                                    centner (q), ton (t), carat (ct), pound (lb) 
+                                    centner (q), ton (t), carat (ct), pound (lb)
 
     square                          square meter (m2), square kilometer (km2), hectare (ha), are (a), square yard (yd2),
                                     square foot (ft2)
 
-    volume                          cubic meter (m3), cubic decimeter (dm3), cubic centimeter (cm3), liter (l), 
-                                    cubic millimeter (mm3), liter (l), milliliter (ml), microliter (mcl), 
-                                    cubic yard (yd3), cubic foot (ft3), barrel (bl), oil barrel (bbl), gallon (gal), 
+    volume                          cubic meter (m3), cubic decimeter (dm3), cubic centimeter (cm3), liter (l),
+                                    cubic millimeter (mm3), liter (l), milliliter (ml), microliter (mcl),
+                                    cubic yard (yd3), cubic foot (ft3), barrel (bl), oil barrel (bbl), gallon (gal),
                                     quart (qt), pint (pt), ounce (oz)
 
     speed                           meter per second (m/s), kilometer per second (km/s), kilometer per hour (km/h),
@@ -100,7 +100,7 @@ def save_results_in_file(history):
 
 def is_value_a_number(value):
     try:
-        number = int(value) + 42
+        int(value) + 42
     except ValueError:
         return False
     return True
