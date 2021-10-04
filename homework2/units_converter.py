@@ -1,29 +1,30 @@
-converter = {'m' : 1, 'km' : 1000, 'dm' : 0.1, 'cm' : 0.01, 'mm' : 0.001, 'mcm' : 0.000001, 'nm' : 0.000000001,
-            'lea' : 4828.032, 'mi' : 1609.344, 'yd' : 0.9144,
-            'ft' : 0.3048, 'in' : 0.0254, 'ln' : 0.0021666666666, 'cl': 0.000254, 'nl' : 5556, 'nmi': 1852,
-            'ftm' : 1.8288,
-            'kg' : 1, 'g' : 0.001, 'mg' : 0.000001, 'mcg' : 0.000000001, 'ng' : 0.000000000001, 'q' : 100, 
-            't' : 1000, 'ct' : 0.0002, 'lb' : 0.45359237,
-            'm2' : 1, 'km2' : 1000000, 'ha' : 10000, 'a' : 100, 'yd2' : 0.83612736, 'ft2' : 0.09290304,
-            'm3' : 1, 'dm3' : 0.001, 'cm3' : 0.000001, 'mm3' : 0.000000001, 'l' : 0.001, 'ml' : 0.000001,
-            'mcl' : 0.000000001, 'yd3' : 0.764554857984, 'ft3' : 0.028316846592, 'bl' : 0.16365924,
-            'bbl' : 0.158987, 'gal' : 0.00378541, 'qt' : 0.000946353, 'pt' : 0.000568261,
-            'oz' : 0.000028349523125,
-            'm/s' : 1, 'km/s' : 1000, 'km/h' : 0.277778, 'm/min' : 0.0166667, 'km/min' : 16.6667,
-            'c' : None, 'k' : None, 'f' : None,
-            }
+converter = {'m': 1, 'km': 1000, 'dm': 0.1, 'cm': 0.01, 'mm': 0.001, 'mcm': 0.000001, 'nm': 0.000000001,
+            'lea': 4828.032, 'mi': 1609.344, 'yd': 0.9144,
+            'ft': 0.3048, 'in': 0.0254, 'ln': 0.0021666666666, 'cl': 0.000254, 'nl': 5556, 'nmi': 1852,
+            'ftm': 1.8288,
+            'kg': 1, 'g': 0.001, 'mg': 0.000001, 'mcg': 0.000000001, 'ng': 0.000000000001, 'q': 100, 
+            't': 1000, 'ct': 0.0002, 'lb': 0.45359237,
+            'm2': 1, 'km2': 1000000, 'ha': 10000, 'a': 100, 'yd2': 0.83612736, 'ft2': 0.09290304,
+            'm3': 1, 'dm3': 0.001, 'cm3': 0.000001, 'mm3': 0.000000001, 'l': 0.001, 'ml': 0.000001,
+            'mcl': 0.000000001, 'yd3': 0.764554857984, 'ft3': 0.028316846592, 'bl': 0.16365924,
+            'bbl': 0.158987, 'gal': 0.00378541, 'qt': 0.000946353, 'pt': 0.000568261,
+            'oz': 0.000028349523125,
+            'm/s': 1, 'km/s': 1000, 'km/h': 0.277778, 'm/min': 0.0166667, 'km/min': 16.6667,
+            'c': None, 'k': None, 'f': None,
+               }
 
-units = ({'m', 'km', 'dm', 'cm', 'mm', 'mcm', 'nm', 'lea', 'mi', 'yd', 'ft', 'in', 'ln', 'cl', 'nl', 'nmi', 'ftm'}, 
-        {'kg', 'g', 'mg', 'mcg', 'ng', 'q', 't', 'ct', 'lb'}, 
-        {'m2', 'km2', 'ha', 'a', 'yd2', 'ft2'}, 
-        {'m3', 'dm3', 'cm3', 'mm3', 'l', 'ml', 'mcl', 'yd3', 'ft3', 'bl', 'bbl', 'gal', 'qt', 'pt', 'oz'}, 
-        {'m/s', 'km/s', 'km/h', 'm/min', 'km/min'}, 
-        {'c', 'k', 'f'})
+units = ({'m', 'km', 'dm', 'cm', 'mm', 'mcm', 'nm', 'lea', 'mi', 'yd', 'ft', 'in', 'ln', 'cl', 'nl', 'nmi', 'ftm'},
+         {'kg', 'g', 'mg', 'mcg', 'ng', 'q', 't', 'ct', 'lb'},
+         {'m2', 'km2', 'ha', 'a', 'yd2', 'ft2'},
+         {'m3', 'dm3', 'cm3', 'mm3', 'l', 'ml', 'mcl', 'yd3', 'ft3', 'bl', 'bbl', 'gal', 'qt', 'pt', 'oz'},
+         {'m/s', 'km/s', 'km/h', 'm/min', 'km/min'},
+         {'c', 'k', 'f'})
 
 history = []
 
+
 def get_help():
-    help_message = f'''
+    help_message = '''
     Program: units_converter.py
     Version: 1.0
 
@@ -34,7 +35,7 @@ def get_help():
 
                                     units format corresponds to the inernational classification
                                     and indicated in the brackets after units below
-    
+
     Example                         to convert 451 degrees Fahrenheit to degrees Celsius type one of this example
                                     commands, which perform equally:
                                     451 f c 
@@ -50,7 +51,7 @@ def get_help():
     history or print                print current session results history on the screen
     h or help                       get this help page
     save                            print current session results history in file
-    
+
     Currently available units:
 
     distance                        meter (m), kilometer (km), decimeter (dm), centimetre (cm), millimeter (mm),
@@ -60,10 +61,10 @@ def get_help():
 
     weight                          kilogram (kg), gram (g), milligram (mg), microgram (mcg), nanogram (ng),
                                     centner (q), ton (t), carat (ct), pound (lb) 
-    
+
     square                          square meter (m2), square kilometer (km2), hectare (ha), are (a), square yard (yd2),
                                     square foot (ft2)
-    
+
     volume                          cubic meter (m3), cubic decimeter (dm3), cubic centimeter (cm3), liter (l), 
                                     cubic millimeter (mm3), liter (l), milliliter (ml), microliter (mcl), 
                                     cubic yard (yd3), cubic foot (ft3), barrel (bl), oil barrel (bbl), gallon (gal), 
@@ -74,7 +75,7 @@ def get_help():
 
     temperature                     degrees celsius (c), degrees kelvin (k), degrees fahrenheit (f)
 
-    
+
     Contacts:
     Mikhail Fofanov                 mikhail.v.fofanov@gmail.com
     '''
