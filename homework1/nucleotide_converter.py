@@ -162,7 +162,7 @@ def get_help():
     example sequences:
     dna or dna example          use example dna sequence {get_example('dna example')}
     rna or rna example          use example rna sequence {get_example('rna example')}
-    
+
     input example files:
     vd or viruses default       use example viruses genome sequences with a default nucleotide alphabet
                                 input file:     viruses_default_alphabet_examples.txt
