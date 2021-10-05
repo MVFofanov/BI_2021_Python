@@ -1,7 +1,9 @@
-    Program: units_converter.py
-    Version: 1.0
+    # Homework 2
+    
+    ## Program: units_converter.py
+    ### Version: 1.0
 
-    Usage                           Type your request in this format: number unit1 unit2
+    ### Usage                           Type your request in this format: number unit1 unit2
                                     number - unit1 amount
                                     unit1 - first physical quantity used to convert from
                                     unit2 - second physical quantity used to convert to
@@ -9,7 +11,7 @@
                                     units format corresponds to the inernational classification
                                     and indicated in the brackets after units below
     
-    Example                         to convert 451 degrees Fahrenheit to degrees Celsius type one of this example
+    ###Example                         to convert 451 degrees Fahrenheit to degrees Celsius type one of this example
                                     commands, which perform equally:
                                     451 f c 
                                     or
