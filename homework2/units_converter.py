@@ -87,7 +87,7 @@ def greeting_message():
     To convert some unit to another, type your request in this format: number unit1 unit2
     Units should be denoted as its short names: 'm' for metres or 'g' for grams
     For example, to convert 451 degrees Fahrenheit to degrees Celsius type: 451 f c
-    Full list of commands, available units and details of use you can find by entering 'h' or 'help'
+    You will know the truth, and the truth will set you free. 'h' or 'help'
     ''')
 
 
