@@ -1,3 +1,4 @@
+# this function tell us about the program and its basic settings, default values, input formats
 def greeting_message():
     text = '''
             This program can help you to filter your raw .fastq data obtained from Illumina sequencing.
@@ -31,29 +32,34 @@ def greeting_message():
 # header, sequence, quality line from input *.fastq file and calculated Read length, Read GC content and Read quality
 # for each individual read. In addition, reads that have passed the filtering and\
 # those that have been eliminated after filtering are also stored in the RAM in the dictionaries in the same manner.
-# This script for tested on the .fastq data which took up about 100 Mb disk space.
+# This script was tested on the .fastq data which took up about 100 Mb disk space.
 # After RUN, this program demanded usage up to 300 Mb RAM and time up to 10 seconds
 
-
+# value[0] - sequence line from .fastq file without '\n' at the end
 def calculate_length(value):
     return len(value[0][:-1])
 
 
+# value[0] - sequence line from .fastq file, value[2] - Read length
 def calculate_gc(value):
     return (value[0].lower().count('g') + value[0].lower().count('c')) * 100 / value[2]
 
 
+# value[0] - sequence line from .fastq file, value[1] - quality line from .fastq file without '\n' at the end,
+# value[2] - Read length
 def calculate_quality(value):
     total_quality = 0
     for i in value[1][:-1]:
-        total_quality += ord(i) - 33
+        total_quality += ord(i) - 33  # getting quality for each read letter using Phred+33 quality score
     return total_quality / value[2]
 
 
+# fastq_dic - dictionary with data from .fastq file
 def calculate_reads_number(fastq_dic):
     return len(fastq_dic)
 
 
+# value[2] - Read length
 def calculate_total_reads_length(fastq_dic):
     total_reads_length = 0
     for value in fastq_dic.values():
@@ -65,6 +71,7 @@ def calculate_average_reads_length(reads_number, total_reads_length):
     return total_reads_length / reads_number
 
 
+# value[3] - Read GC content
 def calculate_average_gc(fastq_dic, reads_number):
     total_gc = 0
     for value in fastq_dic.values():
@@ -72,6 +79,7 @@ def calculate_average_gc(fastq_dic, reads_number):
     return total_gc / reads_number
 
 
+# value[4] - Read quality
 def calculate_average_quality(fastq_dic, reads_number):
     total_quality = 0
     for value in fastq_dic.values():
@@ -79,6 +87,8 @@ def calculate_average_quality(fastq_dic, reads_number):
     return total_quality / reads_number
 
 
+# this function help us to understand, how the program performed, how many reads were saved after filtering,
+# and how its statistics changed (average_gc, average_quality, total_reads_length, average_reads_length)
 def calculate_and_print_statistics(fastq_dic):
     reads_number = (len(fastq_dic))
     average_gc = calculate_average_gc(fastq_dic, reads_number)
@@ -97,6 +107,10 @@ def calculate_and_print_statistics(fastq_dic):
     print()
 
 
+# fastq_dic - dictionary with data from .fastq file. Dictionary structure:
+# key - Read header
+# value[0] - Read sequence line, value[1] - Read quality line,
+# value[2] - Read length, value[3] - Read GC content, value[4] - Read quality number
 def read_file_and_generate_dictionary_with_fastq_data(input_fastq):
     with open(input_fastq) as r:
         fastq_file = r.readlines()
@@ -114,6 +128,8 @@ def read_file_and_generate_dictionary_with_fastq_data(input_fastq):
     return fastq_dic
 
 
+# write data from fastq dictionary to output file
+# name: '*_passed.fastq' or '*_failed.fastq'
 def write_to_file(fastq_dic, name):
     with open(name, 'w') as w:
         for key, value in fastq_dic.items():
@@ -121,6 +137,8 @@ def write_to_file(fastq_dic, name):
             w.writelines(read)
 
 
+# return both dictionaries with passed and failed reads after filtering if save_filtered == True
+# return only dictionary with passed reads after filtering if save_filtered == False
 def save_filtered_or_not(save_filtered, fastq_dic_passed, fastq_dic_failed):
     if save_filtered:
         return fastq_dic_passed, fastq_dic_failed
@@ -128,6 +146,9 @@ def save_filtered_or_not(save_filtered, fastq_dic_passed, fastq_dic_failed):
         return fastq_dic_passed, {}
 
 
+# filter reads by its length using length boundaries (length_bounds)
+# value[2] - Read length, length_bounds[0] and length_bounds[1] are
+# lower and upper Read length bounds, respectively
 def filter_by_length(length_bounds, fastq_dic, fastq_dic_failed, save_filtered):
     fastq_dic_passed = {}
     for key, value in fastq_dic.items():
@@ -139,6 +160,9 @@ def filter_by_length(length_bounds, fastq_dic, fastq_dic_failed, save_filtered):
     return save_filtered_or_not(save_filtered, fastq_dic_passed, fastq_dic_failed)
 
 
+# filter reads by its GC content using GC boundaries (gc_bounds)
+# value[3] - Read GC content, gc_bounds[0] and gc_bounds[1] are
+# lower and upper GC content bounds, respectively
 def filter_by_gc(gc_bounds, fastq_dic, fastq_dic_failed, save_filtered):
     fastq_dic_passed = {}
     for key, value in fastq_dic.items():
@@ -150,6 +174,8 @@ def filter_by_gc(gc_bounds, fastq_dic, fastq_dic_failed, save_filtered):
     return save_filtered_or_not(save_filtered, fastq_dic_passed, fastq_dic_failed)
 
 
+# filter reads by its quality score using quality threshold score (quality_threshold)
+# value[4] - Read quality number
 def filter_by_quality(quality_threshold, fastq_dic, fastq_dic_failed, save_filtered):
     fastq_dic_passed = {}
     for key, value in fastq_dic.items():
@@ -161,6 +187,9 @@ def filter_by_quality(quality_threshold, fastq_dic, fastq_dic_failed, save_filte
     return save_filtered_or_not(save_filtered, fastq_dic_passed, fastq_dic_failed)
 
 
+# this function converts bounds given as a single numbers to intervals for gc_bounds and length_bounds.
+# reads filtering using sequential series of filter functions declared above (filter_by_gc, filter_by_length,
+# filter_by_quality) for arguments (gc_bounds, length_bounds, quality_threshold) which are not default)
 def filter_reads(gc_bounds, length_bounds, quality_threshold, save_filtered, fastq_dic):
     if len(gc_bounds) != 2:
         gc_bounds = tuple(f'0, {gc_bounds[0]}'.split(', '))
@@ -185,6 +214,8 @@ def filter_reads(gc_bounds, length_bounds, quality_threshold, save_filtered, fas
     return fastq_dic_passed, fastq_dic_failed
 
 
+# this function transfers arguments to other functions, calculate and print statistics,
+# write dictionaries with .fastq data to '_passed.fastq' and '_failed.fastq' output files
 def main(input_fastq, output_file_prefix, gc_bounds=(0, 100), length_bounds=(0, 2**32),
          quality_threshold=0, save_filtered=False):
 
@@ -229,6 +260,10 @@ def main(input_fastq, output_file_prefix, gc_bounds=(0, 100), length_bounds=(0, 
         print('After filtering, every single read was saved and nothing was filtered. Try again!')
 
 
+# Here we go again! Finally start the program and say 'Hello' to User!
+# This program part get arguments from User and transfer them to the main() function:
+# input_fastq, output_file_prefix, gc_bounds, length_bounds, quality_threshold, save_filtered
+# You can skip all steps except Input .fastq file name to use default settings.
 if __name__ == '__main__':
     print(greeting_message())
 
