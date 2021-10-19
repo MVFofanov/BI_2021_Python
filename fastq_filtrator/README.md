@@ -26,7 +26,10 @@ passed.fastq | contains all reads saved after filtering
 failed.fastq | contains all reads discarded after filtering
 
 ### WARNING!
-Make sure available RAM have at least three times the size of the .fastq file before RUN,
-This program is sensitive to it, dont use it to analyse whole human genome raw sequencing data.
+Make sure available RAM have at least three times more the size of the .fastq file before RUN.
+
+This program is sensitive to it, dont use it to analyse total whole human genome raw sequencing data.
+
 This script was tested on the .fastq data which took up about 100 Mb disk space.
+
 After RUN, this program demanded usage up to 300 Mb RAM and time up to 10 seconds
