@@ -24,8 +24,8 @@ cd pain
 ### Download files from these directory to your new directory pain
 
 ### Requirements:
-OS: Ubuntu 18.04
-Python 3.9.7
+OS: Ubuntu 18.04.
+Python 3.9.7, versions, older than 3.9 and newer as Python 3.10 are currently not supported by the script and its requirements
 
 ### Installing Python 3.9.7:
 ```
@@ -64,10 +64,16 @@ python3 -m pip install --upgrade pip setuptools
 pip install -r requirements.txt
 ```
 
-### Run the script pain.py
+### RUN the script pain.py
 ```
 python3 pain.py
 ```
+### To deactivate virtual environment type:
+```
+deactivate
+```
 
-
-
+### To delete virtual environment delete its directory:
+```
+rm -r ./pain
+```
