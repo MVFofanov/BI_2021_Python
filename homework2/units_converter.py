@@ -100,7 +100,7 @@ def save_results_in_file(history):
 
 def is_value_a_number(value):
     try:
-        int(value) + 42
+        float(value) + 42
     except ValueError:
         return False
     return True
@@ -170,6 +170,9 @@ while True:
                 print(f"Your units are from different groups. You can't convert {unit1} to {unit2}\n")
             elif not is_value_a_number(value):
                 print(f'Value {value} is not a number. Try again!\n')
+            elif float(value) < 0:
+                er = f'Value {value} is negative. Enter a positive number to save the world from falling into chaos!\n'
+                print(er)
             elif {unit1, unit2}.issubset({'c', 'k', 'f'}):
                 result = convert_temperature_from_Celsius(unit2, convert_temperature_to_Celsius(unit1, float(value)))
                 get_result(result, value, unit1, unit2)
