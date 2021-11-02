@@ -78,3 +78,8 @@ deactivate
 ```
 rm -r ./pain
 ```
+
+### To make your own requirements.txt use:
+```
+python3 -m pip freeze > requirements.txt
+```
