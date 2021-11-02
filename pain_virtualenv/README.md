@@ -25,6 +25,7 @@ cd pain
 
 ### Requirements:
 OS: Ubuntu 18.04.
+
 Python 3.9.7, versions, older than 3.9 and newer as Python 3.10 are currently not supported by the script and its requirements
 
 ### Installing Python 3.9.7:
