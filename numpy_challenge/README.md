@@ -6,7 +6,7 @@ This is my NumPy challenge!
 
 Available commands: | Input: | Output:
 ------------ | ------------- | -------------
-matrix multiplication (mmul) | two matrices | producat matrix
+matrix multiplication (mmul) | two matrices | product matrix
 multiplication check (mc) | matrix list | boolean test result of matrices possibility to be multiplied
 multiply matrices (mmat) | matrix list | multiplication matrices product
 compute 2d distance (c2dd) | two arrays (1 dimension) | calculated distance between these points coordinates
