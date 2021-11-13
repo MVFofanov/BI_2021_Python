@@ -38,7 +38,7 @@ Type your array, columns should be separated with commas while rows with semicol
  [103 109 150]]
 ```
 
-### Matrix multiplication:
+### Multiplication check:
 
 #### Input:
 ```
