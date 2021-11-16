@@ -7,8 +7,8 @@ def greeting_message():
 
             Input .fastq file name                                 input format: my_reads.fastq
             Output .fastq file prefix                              input format: my_result
-            GC content (%)                default: 0, 100          input format: 40, 60
-            Read length (bp)              default: 0, 2**32        input format: 100, 150
+            GC content (%)                default: 0, 100          input format: 40 60
+            Read length (bp)              default: 0, 2**32        input format: 100 150
             Read quality                  default: 0               input format: 30
 
             You can save reads failed after filtering by typing 'yes' or 'y' when you will be asked about it.
@@ -191,12 +191,6 @@ def filter_by_quality(quality_threshold, fastq_dic, fastq_dic_failed, save_filte
 # reads filtering using sequential series of filter functions declared above (filter_by_gc, filter_by_length,
 # filter_by_quality) for arguments (gc_bounds, length_bounds, quality_threshold) which are not default)
 def filter_reads(gc_bounds, length_bounds, quality_threshold, save_filtered, fastq_dic):
-    if len(gc_bounds) != 2:
-        gc_bounds = tuple(f'0, {gc_bounds[0]}'.split(', '))
-
-    if len(length_bounds) != 2:
-        length_bounds = tuple(f'0, {length_bounds[0]}'.split(', '))
-
     fastq_dic_failed = {}
     fastq_dic_passed = fastq_dic
 
@@ -218,92 +212,92 @@ def filter_reads(gc_bounds, length_bounds, quality_threshold, save_filtered, fas
 # write dictionaries with .fastq data to '_passed.fastq' and '_failed.fastq' output files
 def main(input_fastq, output_file_prefix, gc_bounds=(0, 100), length_bounds=(0, 2**32),
          quality_threshold=0, save_filtered=False):
+    print(greeting_message())
 
-    if output_file_prefix.strip() == '':
-        passed = input_fastq[:-6] + '_passed.fastq'
-        failed = input_fastq[:-6] + '_failed.fastq'
+    if input_fastq == '':
+        print('Input *.fastq file name is empty. Try again!')
     else:
-        passed = output_file_prefix + '_passed.fastq'
-        failed = output_file_prefix + '_failed.fastq'
 
-    fastq_dic = read_file_and_generate_dictionary_with_fastq_data(input_fastq)
+        try:
+            if type(gc_bounds) is str:
+                gc_bounds = tuple(map(float, gc_bounds.split()))
+                if len(gc_bounds) == 1:
+                    gc_bounds = (0, gc_bounds[0])
+            elif type(gc_bounds) in {int, float}:
+                gc_bounds = (0, gc_bounds)
 
-    print('Sequencing quality statistics without any filtering')
-    calculate_and_print_statistics(fastq_dic)
+            if type(length_bounds) is str:
+                length_bounds = tuple(map(int, length_bounds.split()))
+                if len(length_bounds) == 1:
+                    length_bounds = (0, length_bounds[0])
+            elif type(length_bounds) in {int, float}:
+                length_bounds = (0, length_bounds)
 
-    fastq_dic_passed, fastq_dic_failed =\
-        filter_reads(gc_bounds, length_bounds, quality_threshold, save_filtered, fastq_dic)
-
-    if len(fastq_dic) != len(fastq_dic_passed):
-        if save_filtered:
-
-            print('Sequencing quality statistics after filtering')
-            if len(fastq_dic_passed) != 0:
-                calculate_and_print_statistics(fastq_dic_passed)
-                write_to_file(fastq_dic_passed, passed)
+            if output_file_prefix.strip() == '':
+                passed = input_fastq + '_passed.fastq'
+                failed = input_fastq + '_failed.fastq'
             else:
-                print('After filtering, not a single read was left. Try again!')
+                passed = output_file_prefix + '_passed.fastq'
+                failed = output_file_prefix + '_failed.fastq'
 
-            print('Sequencing quality statistics after filtering for failed reads')
-            if len(fastq_dic_failed) != 0:
-                calculate_and_print_statistics(fastq_dic_failed)
-                write_to_file(fastq_dic_failed, failed)
+            fastq_dic = read_file_and_generate_dictionary_with_fastq_data(input_fastq)
 
-        else:
-            print('Sequencing quality statistics after filtering')
-            if len(fastq_dic_passed) != 0:
-                calculate_and_print_statistics(fastq_dic_passed)
-                write_to_file(fastq_dic_passed, passed)
+            print('Sequencing quality statistics without any filtering')
+            calculate_and_print_statistics(fastq_dic)
+
+            fastq_dic_passed, fastq_dic_failed =\
+                filter_reads(gc_bounds, length_bounds, quality_threshold, save_filtered, fastq_dic)
+
+            if len(fastq_dic) != len(fastq_dic_passed):
+                if save_filtered:
+
+                    print('Sequencing quality statistics after filtering')
+                    if len(fastq_dic_passed) != 0:
+                        calculate_and_print_statistics(fastq_dic_passed)
+                        write_to_file(fastq_dic_passed, passed)
+                    else:
+                        print('After filtering, not a single read was left. Try again!\n')
+
+                    print('Sequencing quality statistics after filtering for failed reads')
+                    if len(fastq_dic_failed) != 0:
+                        calculate_and_print_statistics(fastq_dic_failed)
+                        write_to_file(fastq_dic_failed, failed)
+
+                else:
+                    print('Sequencing quality statistics after filtering')
+                    if len(fastq_dic_passed) != 0:
+                        calculate_and_print_statistics(fastq_dic_passed)
+                        write_to_file(fastq_dic_passed, passed)
+                    else:
+                        print('After filtering, not a single read was left. Try again!\n')
             else:
-                print('After filtering, not a single read was left. Try again!')
-    else:
-        print('After filtering, every single read was saved and nothing was filtered. Try again!')
+                print('After filtering, every single read was saved and nothing was filtered. Try again!\n')
+        except ValueError:
+            print('Wrong input format. Try again!')
 
 
 # Here we go again! Finally start the program and say 'Hello' to User!
 # This program part get arguments from User and transfer them to the main() function:
 # input_fastq, output_file_prefix, gc_bounds, length_bounds, quality_threshold, save_filtered
-# You can skip all steps except Input .fastq file name to use default settings.
 if __name__ == '__main__':
-    print(greeting_message())
+    input_fastq = input('Type your input .fastq file name: ')
 
-    try:
-        input_fastq = input('Type your input .fastq file name with its extension *.fastq: ')
+    output_file_prefix = input('Type your output .fastq file name prefix without any extension: ')
 
-        output_file_prefix = input('Type your output .fastq file name prefix without any extension: ')
+    gc_input_text = 'Type allowable interval for GC content to filter .fastq file with it: 40 60 '
+    gc_bounds = input(gc_input_text)
 
-        gc_input_text = 'Type allowable interval for GC content to filter .fastq file with it: 40, 60, for example: '
-        gc_bounds = input(gc_input_text)
-        if gc_bounds == '':
-            gc_bounds = (0, 100)
-        else:
-            gc_bounds = tuple(gc_bounds.split(', '))
+    length_input_text = 'Type allowable interval for Read length to filter .fastq with it: 100 150 '
+    length_bounds = input(length_input_text)
 
-        length_input_text = 'Type allowable interval for Read length to filter .fastq with it: 100, 150, for example: '
-        length_bounds = input(length_input_text)
-        if length_bounds == '':
-            length_bounds = (0, 2**32)
-        else:
-            length_bounds = tuple(length_bounds.split(', '))
+    quality_thresh_input_text = 'Type allowable Read quality threshold to filter .fastq with it: 30 '
+    quality_threshold = int(input(quality_thresh_input_text))
 
-        quality_thresh_input_text = 'Type allowable Read quality threshold to filter .fastq with it: 30, for example: '
-        quality_threshold = input(quality_thresh_input_text)
-        if quality_threshold == '':
-            quality_threshold = 0
-        else:
-            quality_threshold = int(quality_threshold)
+    save_filtered = input('Type "yes" to save reads removed after filtering or "no" to discard: ').lower()
+    print()
+    if save_filtered in {'yes', 'y'}:
+        save_filtered = True
+    else:
+        save_filtered = False
 
-        save_filtered = input('Type "yes" to save reads removed after filtering or "no" to discard: ').lower()
-        print()
-        if save_filtered in {'yes', 'y'}:
-            save_filtered = True
-        else:
-            save_filtered = False
-
-        if input_fastq == '':
-            print('Input *.fastq file name is empty. Try again!')
-        else:
-            main(input_fastq, output_file_prefix, gc_bounds, length_bounds,
-                 quality_threshold, save_filtered)
-    except ValueError:
-        print('Wrong input format. Try again!')
+    main(input_fastq, output_file_prefix, gc_bounds, length_bounds, quality_threshold, save_filtered)
