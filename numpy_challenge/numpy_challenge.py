@@ -48,10 +48,11 @@ def compute_multidimensional_distance(array_1, array_2):
 def compute_pair_distances(array):
     n = array.shape[0]
     distance_matrix = np.zeros((n, n))
-    for i in range(n - 1):
-        distance = np.sqrt(np.sum((array[i, ] - array[i + 1:, ]) ** 2))
-        distance_matrix[i, i + 1:] = distance
-        distance_matrix[i + 1:, i] = distance
+    for i in range(len(array) - 1):
+        for j in range(i + 1, len(array)):
+            distance = compute_multidimensional_distance(array[i], array[j])
+            distance_matrix[i, j] = distance
+            distance_matrix[j, i] = distance
     return distance_matrix
 
 
@@ -62,7 +63,7 @@ def greeting_message():
 
     Available commands:                      Input:                          Output:
 
-    matrix multiplication (mmul)             two matrices                    producat matrix
+    matrix multiplication (mmul)             two matrices                    product matrix
     multiplication check (mc)                matrix list                     boolean test result of matrices possibility
                                                                              to be multiplied
     multiply matrices (mmat)                 matrix list                     multiplication matrices product
