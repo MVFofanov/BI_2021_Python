@@ -18,7 +18,7 @@ rm | -r | remove file or directory (-r)
 ```
 chmod +x *.py
 ```
-- use this tools with avalaible options and arguments (use -h for help)
+- use this tools with avalaible options (use -h for help)
 ```
 ./ls.py -a ./test_directory
 ```
