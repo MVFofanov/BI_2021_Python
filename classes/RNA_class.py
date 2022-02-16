@@ -21,7 +21,7 @@ class Rna(str):
         'UGC': 'C', 'UGU': 'C', 'UGA': '*', 'UGG': 'W',
     }
 
-    def __init__(self, sequence): 
+    def __init__(self, sequence):
         """constructor"""
         self.sequence = sequence
 
