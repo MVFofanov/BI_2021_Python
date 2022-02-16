@@ -159,20 +159,14 @@ class Fasta(str, object):
         plt.xticks(fontsize=5, rotation=90)
         plt.savefig('kmer_histogram.png', format='png')
 
-    def __str__(self):
-        try:
-            with open(self.path) as file:
-                for line in file:
-                    print(line.strip())
-        except TypeError:
-            print(line.strip())
-
 
 if __name__ == "__main__":
     start_time = time.process_time()
-    path = r"C:\IB2021-2022\python\SRR1705851.fastq"
+    path = r"/mnt/c/IB2021-2022/python/SRR1705851.fastq"
     my_file = Fasta(path)
     my_file.get_result()
+    my_file2 = Fasta(r"/mnt/c/IB2021-2022/python/amp_res_1_only_one_sequence.fastq")
+    print(my_file2)
     end_time = time.process_time()
     total_time = str(datetime.timedelta(seconds=end_time - start_time))
     print(f'Total time for file statistics analysis: {total_time}')
