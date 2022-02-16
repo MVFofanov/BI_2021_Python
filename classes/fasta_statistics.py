@@ -170,7 +170,7 @@ class Fasta(str, object):
 
 if __name__ == "__main__":
     start_time = time.process_time()
-    path = "C:\IB2021-2022\python\SRR1705851.fastq"
+    path = r"C:\IB2021-2022\python\SRR1705851.fastq"
     my_file = Fasta(path)
     my_file.get_result()
     end_time = time.process_time()
