@@ -109,11 +109,13 @@ class AminoAcidSequenceMutator:
 
 
 def iter_append(iterable, item):
+    """adds an item at the end of an iterable object"""
     yield from iterable
     yield item
 
 
 def unpack_nested_list(my_list):
+    """nested list unpacker for lists"""
     for element in my_list:
         if type(element) is list:
             yield from unpack_nested_list(element)
@@ -122,6 +124,7 @@ def unpack_nested_list(my_list):
 
 
 def nested_list_unpacker(my_list):
+    """nested list unpacker"""
     return list(unpack_nested_list(my_list))
 
 
@@ -160,4 +163,3 @@ if __name__ == "__main__":
 
     packed_list = [1, 2, 3, [1, 2, [3, 4, []], [1], [], 12, 3], [1, [5, 6]]]
     print(f'Unpacked list is {nested_list_unpacker(packed_list)}')
-
