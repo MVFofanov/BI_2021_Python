@@ -160,3 +160,13 @@ Motif Concordance indicates whether the allelic read imbalance is consistent wit
 
 
 For more information please visit: [Link](https://adastra.autosome.org/zanthar/help) and  [Link](https://ananastra.autosome.org/help)
+
+## References
+
+### Landscape of allele-specific transcription factor binding in the human genome.
+
+Sergey Abramov, Alexandr Boytsov, Dariia Bykova, Dmitry D. Penzar, Ivan Yevshin, Semyon K. Kolmykov, Marina V. Fridman, Alexander V. Favorov, Ilya E. Vorontsov, Eugene Baulin, Fedor Kolpakov, Vsevolod J. Makeev, Ivan V. Kulakovskiy. doi: 10.1038/s41467-021-23007-0
+
+### ANANASTRA: annotation and enrichment analysis of allele-specific transcription factor binding at SNPs.
+
+Alexandr Boytsov, Sergey Abramov, Ariuna Z Aiusheeva, Alexandra M Kasianova, Eugene Baulin, Ivan A Kuznetsov, Yurii S Aulchenko, Semyon Kolmykov, Ivan Yevshin, Fedor Kolpakov, Ilya E Vorontsov, Vsevolod J Makeev, Ivan V Kulakovskiy. doi:10.1093/nar/gkac262
