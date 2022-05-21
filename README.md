@@ -137,7 +137,7 @@ ASB stands for Allele-Specific Binding. A Transcription Factor (TF) might prefer
 
 Allele-Specific Binding
 
-![image](https://user-images.githubusercontent.com/70381751/169641065-13c06df3-520e-4239-8d39-5a4f037b5b82.png)
+![image](https://user-images.githubusercontent.com/70381751/169641250-8ea4bba9-c917-4b23-901a-39d8fdc53d58.png)
 
 
 ### ASB effect size
