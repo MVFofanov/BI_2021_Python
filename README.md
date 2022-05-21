@@ -2,6 +2,8 @@
 
 The ADASTRA database contains information about allele-specific transcription factor binding events. A Transcription Factor (TF) might prefer to bind one of two alternative alleles of homologous chromosomes and thus exhibit allele-specific binding (ASB). ASB highlights regulatory SNPs with high potential to affect gene expression.
 
+![image](https://user-images.githubusercontent.com/70381751/169640530-d6e9a033-d517-4a49-bddf-1f6b4cbbefb5.png)
+
 ## Background Allelic Dosage
 
 Background Allelic Dosage (BAD) is the expected ratio of major to minor allelic frequencies in a particular genomic region. For example, if a copy number of two alternating alleles is the same (e.g. 1:1 (diploid), 2:2, or 3:3), then the respective region has BAD=1, i.e. the expected ratio of reads mapped to alternative alleles on heterozygous SNVs is 1. All triploid regions have BAD=2 and the expected allelic read ratio is either 2 or ½. In general, if BAD of a particular region is known, then the expected frequencies of allelic reads are 1/(BAD +1) and BAD/(BAD + 1).
@@ -131,6 +133,7 @@ oc run example_input_new.vcf -a adastra -l hg38
 ` ` `
 
 Open the results from OpenCRAVAT pipeline with a novel ADASTRA annotator module in browser
+
 ` ` `
-example_input_new.vcf.sqlite
+oc gui example_input_new.vcf.sqlite
 ` ` `
