@@ -23,3 +23,11 @@ Motif Concordance indicates whether the allelic read imbalance is consistent wit
 *  Discordant: The absolute value of FC is greater or equal to 2 but not consistent with allelic read imbalance.
 
 For more information please visit: [Link](https://adastra.autosome.org/zanthar/help)
+
+## Installation
+
+### Cloning the OpenCravat-Adastra github repository
+
+` ` `
+git clone https://github.com/gottalottarock/OpenCravat-Adastra.git
+` ` `
