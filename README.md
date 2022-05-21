@@ -15,8 +15,13 @@ This project has been tested using the following software:
 Feature | Version
 ------------ | -------------
 Operating system | Ubuntu 20.04
-Python | Python3.9
-OpenCRAVAT | open-cravat 2.2.7
+Python | Python 3.9
+
+You can install the versions of the python libraries that were used during the testing of the pipeline using the requirements.txt:
+
+` ` `
+pip install -r requirements.txt
+` ` `
 
 ## Installation
 
