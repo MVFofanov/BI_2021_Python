@@ -8,6 +8,16 @@ Currently, there are a large number of ways to annotate genetic variants and var
 
 ![image](https://user-images.githubusercontent.com/70381751/169640530-d6e9a033-d517-4a49-bddf-1f6b4cbbefb5.png)
 
+## Requirements
+
+This project has been tested using the following software:
+
+Feature | Version
+------------ | -------------
+Operating system | Ubuntu 20.04
+Python | Python3.9
+OpenCRAVAT | open-cravat 2.2.7
+
 ## Installation
 
 Creating a new OpenCRAVAT directory called ./oc_test/ 
