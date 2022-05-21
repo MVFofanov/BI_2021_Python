@@ -86,7 +86,7 @@ Further commands are given for python3.9, if you are using a different version, 
 
 OR
 
-You can find the path to modules with this command
+You can find the path to OpenCRAVAT modules with this command
 
 ` ` `
 oc config md
@@ -120,4 +120,17 @@ Integration of the ADASTRA module widget as a novel widget module in the OpenCRA
 
 ` ` `
 cp -r ./OpenCravat-Adastra/wgadastra/ ./new_oc_env/lib/python3.9/site-packages/cravat/modules/webviewerwidgets/
+` ` `
+
+## Usage
+
+Run OpenCRAVAT pipeline with a novel ADASTRA annotator module
+
+` ` `
+oc run example_input_new.vcf -a adastra -l hg38
+` ` `
+
+Open the results from OpenCRAVAT pipeline with a novel ADASTRA annotator module in browser
+` ` `
+example_input_new.vcf.sqlite
 ` ` `
