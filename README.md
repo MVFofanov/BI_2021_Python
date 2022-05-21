@@ -139,6 +139,7 @@ Allele-Specific Binding
 
 ![image](https://user-images.githubusercontent.com/70381751/169641314-4d2494fb-8ebb-4733-8afe-ba0fcdedee13.png)
 
+The alignment of the motif relative to the SNP is shown at the top. Motif P-values indicate the predicted binding specificities for the alternative alleles. The preferred allele according to ADASTRA data along with the ASB FDR and Effect Size is shown at the bottom. The higher bell corresponds to the allele preferentially bound by the TF in vivo according to the underlying ChIP-Seq data. The DNA strand/orientation is marked in the bottom left corner.
 
 ### ASB effect size
 
