@@ -131,6 +131,15 @@ oc gui example_input_new.vcf.sqlite
 Background Allelic Dosage (BAD) is the expected ratio of major to minor allelic frequencies in a particular genomic region. For example, if a copy number of two alternating alleles is the same (e.g. 1:1 (diploid), 2:2, or 3:3), then the respective region has BAD=1, i.e. the expected ratio of reads mapped to alternative alleles on heterozygous SNVs is 1. All triploid regions have BAD=2 and the expected allelic read ratio is either 2 or ½. In general, if BAD of a particular region is known, then the expected frequencies of allelic reads are 1/(BAD +1) and BAD/(BAD + 1).
 ASB significance (FDR)
 
+### Allele-Specific Binding
+
+ASB stands for Allele-Specific Binding. A Transcription Factor (TF) might prefer to bind one of two alternative alleles of homologous chromosomes and thus exhibit allele-specific binding. ASB highlights regulatory SNPs with high potential to affect gene expression.
+
+Allele-Specific Binding
+
+![image](https://user-images.githubusercontent.com/70381751/169641065-13c06df3-520e-4239-8d39-5a4f037b5b82.png)
+
+
 ### ASB effect size
 
 The Effect Size of an ASB event is calculated separately for Reference and Alternative alleles and is defined as the weighted mean of log-ratios of observed and expected allelic read counts, with weights being -log10 of the respective P-values.
@@ -146,4 +155,7 @@ Motif Concordance indicates whether the allelic read imbalance is consistent wit
 *  Concordant: The absolute value of FC is greater or equal to 2 and consistent with allelic read imbalance;
 *  Discordant: The absolute value of FC is greater or equal to 2 but not consistent with allelic read imbalance.
 
-For more information please visit: [Link](https://adastra.autosome.org/zanthar/help)
+![image](https://user-images.githubusercontent.com/70381751/169641105-abaa7bc4-9841-4179-a2a2-ceaf34c98ae1.png)
+
+
+For more information please visit: [Link](https://adastra.autosome.org/zanthar/help) and  [Link](https://ananastra.autosome.org/help)
