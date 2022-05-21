@@ -52,16 +52,16 @@ Activating a new virtual environment
 source ./new_oc_env/bin/activate
 ` ` `
 
-Cloning the OpenCravat-Adastra github repository
-
-` ` `
-git clone https://github.com/gottalottarock/OpenCravat-Adastra.git
-` ` `
-
 Installation of the OpenCRAVAT
 
 ` ` `
 pip3 install open-cravat
+` ` `
+
+Installation of base OpenCRAVAT modules
+
+` ` `
+oc module install-base
 ` ` `
 
 This command can help you find out exactly where OpenCRAVAT was installed
@@ -70,8 +70,54 @@ This command can help you find out exactly where OpenCRAVAT was installed
 which oc
 ` ` `
 
+Cloning the OpenCravat-Adastra github repository
 
-ddd
 ` ` `
-sudo cp -r ~/OpenCravat-Adastra/wgadastra_tf/ /usr/local/lib/python3.8/dist-packages/cravat/modules/webviewerwidgets/
+git clone https://github.com/gottalottarock/OpenCravat-Adastra.git
+` ` `
+
+This command can help you find out exactly where python3 was installed and its version which you have to indicate in paths to modules below
+
+` ` `
+which python3
+` ` `
+
+Further commands are given for python3.9, if you are using a different version, then change it in the paths to the OpenCRAVAT modules below
+
+OR
+
+You can find the path to modules with this command
+
+` ` `
+oc config md
+` ` `
+
+Integration of the ADASTRA module as a novel annotator module in the OpenCRAVAT
+
+` ` `
+cp -r ./OpenCravat-Adastra/adastra/ ./new_oc_env/lib/python3.9/site-packages/cravat/modules/annotators/
+` ` `
+
+Creating a new ADASTRA annotator module directory /data/
+
+` ` `
+mkdir ./new_oc_env/lib/python3.9/site-packages/cravat/modules/annotators/adastra/data/
+` ` `
+
+Integration of the ADASTRA module database as a novel database in the OpenCRAVAT
+
+` ` `
+cp ~/adastra_tf.sqlite ./new_oc_env/lib/python3.9/site-packages/cravat/modules/annotators/adastra/data/
+` ` `
+
+Changing the access permissions of an ADASTRA module database
+
+` ` `
+chmod 777 ./new_oc_env/lib/python3.9/site-packages/cravat/modules/annotators/adastra/data/adastra_tf.sqlite
+` ` `
+
+Integration of the ADASTRA module widget as a novel widget module in the OpenCRAVAT
+
+` ` `
+cp -r ./OpenCravat-Adastra/wgadastra/ ./new_oc_env/lib/python3.9/site-packages/cravat/modules/webviewerwidgets/
 ` ` `
