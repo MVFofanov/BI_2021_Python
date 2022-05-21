@@ -26,8 +26,52 @@ For more information please visit: [Link](https://adastra.autosome.org/zanthar/h
 
 ## Installation
 
+Creating a new OpenCRAVAT directory called ./oc_test/ 
+
+You can save this or choose any other name.
+
+` ` `
+mkdir oc_test
+` ` `
+
+Moving to a directory ./oc_test/
+
+` ` `
+cd oc_test/
+` ` `
+
+Creating a new virtual environment located at ./new_oc_env/
+
+` ` `
+python3 -m venv ./new_oc_env/
+` ` `
+
+Activating a new virtual environment
+
+` ` `
+source ./new_oc_env/bin/activate
+` ` `
+
 Cloning the OpenCravat-Adastra github repository
 
 ` ` `
 git clone https://github.com/gottalottarock/OpenCravat-Adastra.git
+` ` `
+
+Installation of the OpenCRAVAT
+
+` ` `
+pip3 install open-cravat
+` ` `
+
+This command can help you find out exactly where OpenCRAVAT was installed
+
+` ` `
+which oc
+` ` `
+
+
+ddd
+` ` `
+sudo cp -r ~/OpenCravat-Adastra/wgadastra_tf/ /usr/local/lib/python3.8/dist-packages/cravat/modules/webviewerwidgets/
 ` ` `
