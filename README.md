@@ -137,3 +137,11 @@ Open the results from OpenCRAVAT pipeline with a novel ADASTRA annotator module 
 ` ` `
 oc gui example_input_new.vcf.sqlite
 ` ` `
+
+## Results
+
+![table_1](https://user-images.githubusercontent.com/70381751/169640611-248f4004-fa2b-4c57-b4e0-1ae3900717e5.png)
+
+![table_2](https://user-images.githubusercontent.com/70381751/169640638-090e8738-8282-41ac-a330-7e4ce825db38.png)
+
+
